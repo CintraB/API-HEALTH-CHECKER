@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  api-health-checker:
+    build: .
+    container_name: api-health-checker
+    restart: unless-stopped
+    environment:
+      # Configurações da API
+      - API_BASE_URL=${API_BASE_URL}
+      - API_USERNAME=${API_USERNAME}
+      - API_TOKEN=${API_TOKEN}
+      
+      # Configurações de Email
+      - EMAILREMETENTE=${EMAILREMETENTE}
+      - EMAILDESTINATARIO=${EMAILDESTINATARIO}
+      - EMAILCC=${EMAILCC}
+      
+      # Configurações SMTP
+      - SMTPHOST=${SMTPHOST}
+      - SMTPPORT=${SMTPPORT}
+      - SMTPUSER=${SMTPUSER}
+      - SMTPPASS=${SMTPPASS}
+      
+      # Timezone
+      - TZ=America/Sao_Paulo
+    
+    volumes:
+      # Persistir logs fora do container
+      - ./logs:/app/logs
+    
+    # Opcional: Expor porta para futuras funcionalidades (API de status)
+    # ports:
+    #   - "3000:3000"
+    
+    # Recursos limitados (opcional)
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.25'
+          memory: 128M

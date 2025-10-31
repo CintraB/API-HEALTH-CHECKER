@@ -1,0 +1,32 @@
+{
+  "name": "api-health-checker",
+  "version": "1.0.0",
+  "description": "Sistema de monitoramento automático de APIs com envio de relatórios por email",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "node src/healthChecker.js"
+  },
+  "keywords": [
+    "health-check",
+    "api-monitor",
+    "scheduler",
+    "email-reporter",
+    "automation"
+  ],
+  "author": "Cristhian Cintra",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "dotenv": "^16.3.1",
+    "node-cron": "^3.0.3",
+    "nodemailer": "^6.9.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
